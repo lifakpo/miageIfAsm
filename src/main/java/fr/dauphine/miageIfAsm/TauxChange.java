@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -13,7 +14,7 @@ import javax.persistence.TemporalType;
 @Entity
 public class TauxChange implements Serializable {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String source;
 	private String dest;
@@ -24,6 +25,18 @@ public class TauxChange implements Serializable {
 
 	public TauxChange() {
 		super();
+	}
+
+	public TauxChange(String source, String dest, double taux, Date date) {
+		super();
+		this.source = source;
+		this.dest = dest;
+		this.taux = taux;
+		this.date = date;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getSource() {
