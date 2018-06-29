@@ -34,7 +34,7 @@ public class ChangeController {
 		return repository.findBySourceAndDest(source.toUpperCase(), dest.toUpperCase());
 	}
 
-	@PutMapping("/devise-change/{id}")
+	@PostMapping("/devise-change/{id}")
 	public TauxChange updateTauxChange(@RequestBody TauxChange tauxChange, @PathVariable Long id) {
 		tauxChange.setId(id);
 		return repository.saveAndFlush(tauxChange);
